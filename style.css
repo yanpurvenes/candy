@@ -27,45 +27,25 @@ body {
   padding-bottom: 40px;
 }
 
-/* Header */
+/* Header - скроллится вместе с контентом (НЕ sticky) */
 header {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(247, 244, 240, 0.98) 100%);
-  border-bottom: 2px solid var(--card-border);
-  padding: 35px 20px 25px 20px;
+  background-color: var(--bg-color);
+  padding: 25px 15px 10px 15px; /* Уменьшены отступы, так как заголовка больше нет */
   text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px var(--shadow-color);
-}
-
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.7rem; /* Увеличено */
-  color: var(--accent-color);
-  margin-bottom: 8px;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-size: 1.15rem; /* Увеличено */
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-  font-weight: 500;
+  box-shadow: none; /* Убран теневой эффект для слияния с фоном */
 }
 
 /* Search Bar Wrapper */
 .search-wrapper {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   position: relative;
 }
 
 .search-input {
   width: 100%;
-  padding: 18px 20px 18px 60px; /* Увеличено */
-  font-size: 1.3rem; /* Крупный шрифт поиска */
+  padding: 18px 20px 18px 60px;
+  font-size: 1.3rem;
   border-radius: 35px;
   border: 2px solid var(--card-border);
   background-color: var(--search-bg);
@@ -73,12 +53,12 @@ h1 {
   font-family: inherit;
   outline: none;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
 }
 
 .search-input:focus {
   border-color: var(--accent-color);
-  box-shadow: 0 0 12px rgba(125, 79, 39, 0.25), 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 12px rgba(125, 79, 39, 0.25), 0 4px 10px rgba(0, 0, 0, 0.04);
 }
 
 .search-icon {
@@ -111,12 +91,12 @@ h1 {
 /* Stats */
 .stats {
   max-width: 700px;
-  margin: 25px auto 0 auto;
+  margin: 15px auto 0 auto;
   padding: 0 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.25rem; /* Увеличено */
+  font-size: 1.25rem;
   color: var(--accent-color);
   font-weight: 700;
 }
@@ -124,7 +104,7 @@ h1 {
 /* Main Container */
 .container {
   max-width: 700px;
-  margin: 20px auto 0 auto;
+  margin: 15px auto 0 auto;
   padding: 0 15px;
 }
 
@@ -141,7 +121,7 @@ h1 {
   border-radius: 18px;
   overflow: hidden;
   display: flex;
-  padding: 22px; /* Увеличен */
+  padding: 22px;
   box-shadow: 0 4px 15px var(--shadow-color);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -168,11 +148,11 @@ h1 {
 }
 
 .candy-title {
-  font-size: 1.55rem; /* Увеличено */
+  font-size: 1.55rem;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.3;
-  cursor: pointer; /* Делает название кликабельным */
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -182,7 +162,7 @@ h1 {
 
 .candy-title:hover {
   color: var(--accent-color);
-  text-decoration: underline; /* Подчеркивание при наведении для понятности клика */
+  text-decoration: underline;
 }
 
 .photo-link {
@@ -199,7 +179,7 @@ h1 {
 .candy-price {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 1.45rem; /* Увеличено */
+  font-size: 1.45rem;
   color: var(--accent-color);
   white-space: nowrap;
   background-color: rgba(125, 79, 39, 0.08);
@@ -217,7 +197,7 @@ h1 {
 }
 
 .candy-composition {
-  font-size: 1.25rem; /* Увеличено по просьбе */
+  font-size: 1.25rem;
   color: var(--text-secondary);
   line-height: 1.5;
   border-top: 2px solid rgba(0, 0, 0, 0.06);
@@ -248,7 +228,7 @@ h1 {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.98); /* Более плотный белый фон */
+  background-color: rgba(255, 255, 255, 0.98);
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -281,7 +261,7 @@ h1 {
   color: #ffffff;
   padding: 12px 28px;
   border-radius: 30px;
-  font-size: 1.25rem; /* Крупный текст закрытия */
+  font-size: 1.25rem;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -333,14 +313,7 @@ h1 {
 /* Mobile Adjustments */
 @media (max-width: 480px) {
   header {
-    padding: 25px 15px 15px 15px;
-  }
-  h1 {
-    font-size: 2.2rem;
-  }
-  .subtitle {
-    font-size: 1.05rem;
-    margin-bottom: 15px;
+    padding: 20px 15px 10px 15px;
   }
   .search-input {
     padding: 16px 15px 16px 50px;

@@ -4,15 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f7f4f0">
-  <title>Шоколадный Бутик — Каталог Конфет</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Каталог Конфет</title>
+  <!-- Добавлена версия для сброса кэша браузера -->
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
   <header>
-    <h1>Шоколадный Бутик</h1>
-    <p class="subtitle">Изысканные конфеты и трюфели ручной работы</p>
-    
     <div class="search-wrapper">
       <span class="search-icon">🔍</span>
       <input type="text" class="search-input" placeholder="Поиск по названию или составу..." id="searchInput">
@@ -43,8 +41,8 @@
     <img src="" alt="Фото ценника конфеты" class="modal-content" id="modalImg">
   </div>
 
-  <!-- Подключение базы данных конфет -->
-  <script src="candies_data.js"></script>
+  <!-- Подключение базы данных конфет с версией для сброса кэша -->
+  <script src="candies_data.js?v=4"></script>
   
   <script>
     const searchInput = document.getElementById('searchInput');
@@ -138,6 +136,7 @@
       document.body.style.overflow = 'hidden';
     }
 
+    // Explicit close modal
     function closeModal() {
       imageModal.classList.remove('active');
       document.body.style.overflow = '';
