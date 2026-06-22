@@ -39,8 +39,8 @@
 
   <!-- Модальное окно для полноразмерных фото -->
   <div class="modal" id="imageModal">
-    <button class="modal-close" id="modalClose">✕</button>
-    <img src="" alt="Увеличенное фото конфеты" class="modal-content" id="modalImg">
+    <button class="modal-close" id="modalClose">✕ Закрыть</button>
+    <img src="" alt="Фото ценника конфеты" class="modal-content" id="modalImg">
   </div>
 
   <!-- Подключение базы данных конфет -->
@@ -75,13 +75,12 @@
         card.className = 'candy-card';
         
         card.innerHTML = `
-          <div class="candy-img-wrapper" onclick="openModal('${candy.image}')">
-            <img class="candy-img" src="${candy.image}" alt="${candy.name}" loading="lazy">
-          </div>
           <div class="candy-info">
             <div class="candy-header">
-              <span class="candy-title">${candy.name}</span>
-              <span class="candy-price">${candy.price} ₽</span>
+              <span class="candy-title" onclick="openModal('${candy.image}')">
+                ${candy.name} <span class="photo-link" title="Посмотреть фото ценника">📸</span>
+              </span>
+              <span class="candy-price" onclick="openModal('${candy.image}')">${candy.price} ₽</span>
             </div>
             <div class="candy-composition">
               ${candy.composition}

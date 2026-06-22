@@ -307,8 +307,8 @@ const candiesData = [
   },
   {
     "name": "ШОКОЛАДНЫЕ КОНФЕТЫ С КОНЬЯКОМ",
-    "composition": "",
-    "price": 0,
+    "composition": "тёмный, молочный шоколад, коньяк",
+    "price": 835,
     "image": "images/shokoladnye-konfety-s-konyakom.jpg"
   }
 ];
