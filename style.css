@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap');
 
 :root {
-  --bg-color: #120a04;
-  --card-bg: #1f1107;
-  --card-border: #351f0f;
-  --accent-color: #dfb15b;
-  --accent-hover: #f3cc83;
-  --text-primary: #fcf9f5;
-  --text-secondary: #cbbab0;
-  --search-bg: #28170c;
-  --shadow-color: rgba(0, 0, 0, 0.4);
+  --bg-color: #0b0502; /* Более темный фон для максимального контраста */
+  --card-bg: #1c0e05;  /* Более контрастный фон карточек */
+  --card-border: #442611;
+  --accent-color: #ffd276; /* Более яркое золото для лучшей видимости */
+  --accent-hover: #ffe4a0;
+  --text-primary: #ffffff; /* Чистый белый для лучшей читаемости */
+  --text-secondary: #f3e5db; /* Светлый крем для высокого контраста состава */
+  --search-bg: #271409;
+  --shadow-color: rgba(0, 0, 0, 0.6);
 }
 
 * {
@@ -23,36 +23,36 @@ body {
   font-family: 'Outfit', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-primary);
-  line-height: 1.5;
+  line-height: 1.6; /* Увеличен межстрочный интервал для легкого чтения */
   padding-bottom: 40px;
 }
 
 /* Header */
 header {
-  background: linear-gradient(180deg, rgba(31, 17, 7, 0.95) 0%, rgba(18, 10, 4, 0.95) 100%);
-  border-bottom: 1px solid var(--card-border);
+  background: linear-gradient(180deg, rgba(28, 14, 5, 0.98) 0%, rgba(11, 5, 2, 0.98) 100%);
+  border-bottom: 2px solid var(--card-border);
   padding: 30px 20px 20px 20px;
   text-align: center;
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px var(--shadow-color);
+  box-shadow: 0 6px 25px var(--shadow-color);
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
+  font-size: 2.5rem; /* Увеличено */
   color: var(--accent-color);
   margin-bottom: 8px;
   letter-spacing: 1px;
 }
 
 .subtitle {
-  font-size: 0.95rem;
+  font-size: 1.1rem; /* Увеличено */
   color: var(--text-secondary);
   margin-bottom: 20px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* Search Bar Wrapper */
@@ -64,43 +64,43 @@ h1 {
 
 .search-input {
   width: 100%;
-  padding: 14px 20px 14px 50px;
-  font-size: 1.05rem;
-  border-radius: 30px;
-  border: 1px solid var(--card-border);
+  padding: 16px 20px 16px 55px; /* Увеличено */
+  font-size: 1.25rem; /* Крупный шрифт поиска */
+  border-radius: 35px;
+  border: 2px solid var(--card-border);
   background-color: var(--search-bg);
   color: var(--text-primary);
   font-family: inherit;
   outline: none;
   transition: all 0.3s ease;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
 }
 
 .search-input:focus {
   border-color: var(--accent-color);
-  box-shadow: 0 0 10px rgba(223, 177, 91, 0.25), inset 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 0 12px rgba(255, 210, 118, 0.4), inset 0 2px 5px rgba(0,0,0,0.3);
 }
 
 .search-icon {
   position: absolute;
-  left: 20px;
+  left: 22px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--accent-color);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   pointer-events: none;
 }
 
 .clear-btn {
   position: absolute;
-  right: 20px;
+  right: 22px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   color: var(--text-secondary);
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   display: none;
 }
 
@@ -111,13 +111,14 @@ h1 {
 /* Stats */
 .stats {
   max-width: 700px;
-  margin: 20px auto 0 auto;
+  margin: 25px auto 0 auto;
   padding: 0 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  font-size: 1.1rem; /* Увеличено */
+  color: var(--accent-color);
+  font-weight: 600;
 }
 
 /* Main Container */
@@ -131,19 +132,19 @@ h1 {
 .candy-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px; /* Увеличен зазор между карточками */
 }
 
 .candy-card {
   background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
+  border: 2px solid var(--card-border); /* Утолщенная рамка */
+  border-radius: 18px;
   overflow: hidden;
   display: flex;
-  padding: 16px;
-  gap: 16px;
-  box-shadow: 0 4px 15px var(--shadow-color);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  padding: 20px; /* Увеличен внутренний отступ */
+  gap: 20px;
+  box-shadow: 0 6px 20px var(--shadow-color);
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .candy-card:hover {
@@ -153,10 +154,10 @@ h1 {
 
 /* Candy Image Thumbnail */
 .candy-img-wrapper {
-  width: 90px;
-  height: 120px;
+  width: 105px;  /* Увеличено */
+  height: 140px; /* Увеличено */
   flex-shrink: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
   background-color: #0b0603;
   border: 1px solid var(--card-border);
@@ -186,12 +187,12 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .candy-title {
-  font-size: 1.15rem;
+  font-size: 1.45rem; /* Значительно увеличено */
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.3;
@@ -200,35 +201,37 @@ h1 {
 .candy-price {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.35rem; /* Значительно увеличено */
   color: var(--accent-color);
   white-space: nowrap;
-  background-color: rgba(223, 177, 91, 0.1);
-  padding: 4px 10px;
+  background-color: rgba(255, 210, 118, 0.12);
+  padding: 6px 14px;
   border-radius: 20px;
-  border: 1px solid rgba(223, 177, 91, 0.2);
+  border: 2px solid rgba(255, 210, 118, 0.25);
 }
 
 .candy-composition {
-  font-size: 0.92rem;
-  color: var(--text-secondary);
+  font-size: 1.15rem; /* Значительно увеличено по просьбе пользователя */
+  color: var(--text-secondary); /* Высококонтрастный цвет */
   margin-top: auto;
-  line-height: 1.4;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 8px;
+  line-height: 1.5;
+  border-top: 2px solid rgba(255, 255, 255, 0.08);
+  padding-top: 12px;
+  font-weight: 400;
 }
 
 /* No Results */
 .no-results {
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
   color: var(--text-secondary);
+  font-size: 1.2rem;
 }
 
 .no-results i {
-  font-size: 3rem;
+  font-size: 4rem;
   color: var(--card-border);
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   display: block;
 }
 
@@ -239,7 +242,7 @@ h1 {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(10, 5, 2, 0.95);
+  background-color: rgba(10, 5, 2, 0.97);
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -255,11 +258,11 @@ h1 {
 }
 
 .modal-content {
-  max-width: 90%;
-  max-height: 80%;
+  max-width: 95%;
+  max-height: 85%;
   border-radius: 12px;
-  border: 2px solid var(--accent-color);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  border: 3px solid var(--accent-color);
+  box-shadow: 0 10px 50px rgba(0,0,0,0.9);
   object-fit: contain;
 }
 
@@ -267,13 +270,13 @@ h1 {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: rgba(0,0,0,0.6);
-  border: 1px solid var(--card-border);
+  background: rgba(0,0,0,0.8);
+  border: 2px solid var(--card-border);
   color: #fff;
-  width: 44px;
-  height: 44px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -289,20 +292,20 @@ h1 {
 /* Floating Action Button */
 .scroll-top {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 25px;
+  right: 25px;
   background-color: var(--accent-color);
   color: var(--bg-color);
-  width: 46px;
-  height: 46px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease;
@@ -325,38 +328,48 @@ h1 {
     padding: 20px 15px 15px 15px;
   }
   h1 {
-    font-size: 1.7rem;
+    font-size: 2rem;
   }
   .subtitle {
-    font-size: 0.85rem;
+    font-size: 1rem;
     margin-bottom: 15px;
   }
   .search-input {
-    padding: 12px 15px 12px 42px;
-    font-size: 0.95rem;
+    padding: 14px 15px 14px 48px;
+    font-size: 1.15rem; /* Крупный поиск на мобильном */
   }
   .search-icon {
-    left: 15px;
-    font-size: 1rem;
+    left: 18px;
+    font-size: 1.2rem;
   }
   .candy-card {
-    padding: 12px;
-    gap: 12px;
-    border-radius: 12px;
+    padding: 16px;
+    gap: 16px;
+    border-radius: 14px;
+    flex-direction: column; /* На очень узких мобильных экранах картинка будет сверху, чтобы не сжимать текст */
+    align-items: stretch;
   }
-  .candy-img-wrapper {
-    width: 75px;
-    height: 100px;
+  
+  /* Если экран позволяет, оставим картинку сбоку, но сделаем ее пошире */
+  @media (min-width: 360px) {
+    .candy-card {
+      flex-direction: row;
+    }
+    .candy-img-wrapper {
+      width: 90px;
+      height: 120px;
+    }
   }
+  
   .candy-title {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   .candy-price {
-    font-size: 0.95rem;
-    padding: 2px 8px;
+    font-size: 1.15rem;
+    padding: 4px 10px;
   }
   .candy-composition {
-    font-size: 0.82rem;
-    padding-top: 6px;
+    font-size: 1.05rem; /* Крупное описание на мобильном */
+    padding-top: 10px;
   }
 }
