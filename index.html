@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#120a04">
+  <title>Шоколадный Бутик — Каталог Конфет</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Шоколадный Бутик</h1>
+    <p class="subtitle">Изысканные конфеты и трюфели ручной работы</p>
+    
+    <div class="search-wrapper">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" placeholder="Поиск по названию или составу..." id="searchInput">
+      <button class="clear-btn" id="clearBtn">✕</button>
+    </div>
+  </header>
+
+  <div class="stats">
+    <span id="counter">Всего: 0 позиций</span>
+  </div>
+
+  <main class="container">
+    <div class="candy-list" id="candyList">
+      <!-- Конфеты будут отрендерены через JS -->
+    </div>
+    
+    <div class="no-results" id="noResults" style="display: none;">
+      <i>⚠️</i>
+      Ничего не найдено по вашему запросу.<br>Попробуйте изменить поисковый запрос.
+    </div>
+  </main>
+
+  <button class="scroll-top" id="scrollTopBtn" title="Наверх">↑</button>
+
+  <!-- Модальное окно для полноразмерных фото -->
+  <div class="modal" id="imageModal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <img src="" alt="Увеличенное фото конфеты" class="modal-content" id="modalImg">
+  </div>
+
+  <!-- Подключение базы данных конфет -->
+  <script src="candies_data.js"></script>
+  
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('clearBtn');
+    const candyList = document.getElementById('candyList');
+    const noResults = document.getElementById('noResults');
+    const counter = document.getElementById('counter');
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    const imageModal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalClose = document.getElementById('modalClose');
+
+    // Render list
+    function renderCandies(list) {
+      candyList.innerHTML = '';
+      
+      if (list.length === 0) {
+        noResults.style.display = 'block';
+        counter.textContent = 'Ничего не найдено';
+        return;
+      }
+      
+      noResults.style.display = 'none';
+      counter.textContent = `Найдено: ${list.length} позиций`;
+      
+      list.forEach(candy => {
+        const card = document.createElement('div');
+        card.className = 'candy-card';
+        
+        card.innerHTML = `
+          <div class="candy-img-wrapper" onclick="openModal('${candy.image}')">
+            <img class="candy-img" src="${candy.image}" alt="${candy.name}" loading="lazy">
+          </div>
+          <div class="candy-info">
+            <div class="candy-header">
+              <span class="candy-title">${candy.name}</span>
+              <span class="candy-price">${candy.price} ₽</span>
+            </div>
+            <div class="candy-composition">
+              ${candy.composition}
+            </div>
+          </div>
+        `;
+        
+        candyList.appendChild(card);
+      });
+    }
+
+    // Live search
+    searchInput.addEventListener('input', (e) => {
+      const val = e.target.value.toLowerCase().trim();
+      
+      if (val.length > 0) {
+        clearBtn.style.display = 'block';
+      } else {
+        clearBtn.style.display = 'none';
+      }
+      
+      const filtered = candiesData.filter(candy => {
+        return candy.name.toLowerCase().includes(val) || 
+               candy.composition.toLowerCase().includes(val);
+      });
+      
+      renderCandies(filtered);
+    });
+
+    // Clear search
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      clearBtn.style.display = 'none';
+      renderCandies(candiesData);
+      searchInput.focus();
+    });
+
+    // Scroll behavior
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Modal behavior
+    function openModal(imgSrc) {
+      modalImg.src = imgSrc;
+      imageModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      imageModal.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { modalImg.src = ''; }, 300);
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    imageModal.addEventListener('click', (e) => {
+      if (e.target === imageModal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    // Initial render
+    renderCandies(candiesData);
+  </script>
+</body>
+</html>
